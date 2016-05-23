@@ -36,9 +36,7 @@ public class TokenProvider {
 
     @PostConstruct
     public void init() {
-        this.secretKey =
-            jHipsterProperties.getSecurity().getAuthentication().getJwt().getSecret();
-
+        this.secretKey = System.getenv("JWT_SECRET_KEY");
         this.tokenValidityInSeconds =
             1000 * jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSeconds();
         this.tokenValidityInSecondsForRememberMe =
